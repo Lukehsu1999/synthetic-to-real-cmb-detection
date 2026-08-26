@@ -1,5 +1,5 @@
 # Preprocessing README
-![Preprocessing Flow](https://github.com/Lukehsu1999/synthetic-to-real-cmb-detection/figures/preprocessing_flow.png)
+![Preprocessing Flow](https://github.com/Lukehsu1999/synthetic-to-real-cmb-detection/blob/main/figures/preprocessing_flow.png)
 
 ## Steps
 ### 1. dicom_to_nifti.py
