@@ -1,3 +1,6 @@
+# Microbleed Detection
+For cerebral microbleed (CMB) detection, we use a configurable MONAI 3D U-Net as the primary detection framework, with the self-configuring nnU-Net as a complementary framework for evaluating synthetic-to-real transfer across different segmentation architectures and training pipelines.
+
 # MONAI CMB Detection
 
 Lightweight MONAI-based 3D U-Net training and inference scripts for cerebral microbleed (CMB) segmentation.
@@ -94,3 +97,6 @@ Core dependencies include Python, PyTorch, MONAI, NumPy, NiBabel, PyYAML, and We
 
 ## Supporting Scripts
 In /other_training_scripts
+
+# nnUNet
+Checkout nnUNet_Microbleed_Segmentation.ipynb for instructions setting up and training a nnUNet for Microbleed Segmentation
