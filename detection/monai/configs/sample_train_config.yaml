@@ -1,0 +1,65 @@
+paths:
+  image_dir: /path/to/imagesTr
+  label_dir: /path/to/labelsTr
+  output_root: ./runs
+
+experiment:
+  exp_name: sample_light_96x96x48_pos2neg1
+  wandb_project: microbleed-3d
+  wandb_mode: online
+  wandb_watch: false
+
+data:
+  val_ratio: 0.2
+  seed: 42
+  roi_size:
+    - 96
+    - 96
+    - 48
+  batch_size: 1
+  sw_batch_size: 2
+  sw_overlap: 0.5
+  num_workers: 4
+  num_folds: 5
+  fold_index: 0
+
+sampling:
+  pos: 2
+  neg: 1
+  num_samples: 8
+
+model:
+  name: monai_unet
+  spatial_dims: 3
+  in_channels: 1
+  out_channels: 1
+  channels:
+    - 16
+    - 32
+    - 64
+  strides:
+    - 2
+    - 2
+  num_res_units: 1
+
+training:
+  max_epochs: 150
+  validate_every_epoch: true
+  val_interval: 1
+  log_interval: 20
+  lr: 0.001
+  weight_decay: 0.00001
+  dice_smooth: 1.0
+  threshold: 0.5
+  best_ma_window: 5
+  save_single_best_also: true
+
+scheduler:
+  name: cosine
+  eta_min: 0.00001
+
+  # Used only when scheduler.name is "reduce_on_plateau".
+  mode: max
+  factor: 0.5
+  patience: 10
+  min_lr: 0.00001
