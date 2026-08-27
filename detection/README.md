@@ -100,3 +100,6 @@ In /other_training_scripts
 
 # nnUNet
 Checkout nnUNet_Microbleed_Segmentation.ipynb for instructions setting up and training a nnUNet for Microbleed Segmentation
+
+# Ensemble
+We use majority voting for ensembling the 5-fold predictions, checkout majority_voting_ensemble.py
