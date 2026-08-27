@@ -482,7 +482,7 @@ footer p {
   margin-top: 52px;
 }
 
-.prediction-gif {
+.prediction-video {
   display: block;
   width: 100%;
   height: auto;
@@ -502,7 +502,7 @@ footer p {
   }
 }
 
-.model-gif {
+.model-video {
   display: block;
   width: 100%;
   height: auto;

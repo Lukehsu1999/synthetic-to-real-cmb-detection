@@ -128,29 +128,57 @@
           </p>
 
           <div class="prediction-grid">
-            <img
-              class="prediction-gif"
-              src="assets/gifs/MONAI/982880_R3664297_SWAN_original.gif"
-              alt="Original SWAN MRI"
-            />
+            <video
+              class="prediction-video sync-prediction-video"
+              muted
+              playsinline
+              preload="auto"
+              aria-label="Original SWAN MRI"
+            >
+              <source
+                src="assets/videos/MONAI/982880_R3664297_SWAN_original.mp4"
+                type="video/mp4"
+              />
+            </video>
 
-            <img
-              class="prediction-gif"
-              src="assets/gifs/MONAI/982880_R3664297_SWAN_ground_truth.gif"
-              alt="Ground-truth CMB segmentation"
-            />
+            <video
+              class="prediction-video sync-prediction-video"
+              muted
+              playsinline
+              preload="auto"
+              aria-label="Ground-truth CMB segmentation"
+            >
+              <source
+                src="assets/videos/MONAI/982880_R3664297_SWAN_ground_truth.mp4"
+                type="video/mp4"
+              />
+            </video>
 
-            <img
-              class="prediction-gif"
-              src="assets/gifs/MONAI/982880_R3664297_SWAN_real_trained_monai_u_net.gif"
-              alt="Real-trained MONAI U-Net prediction"
-            />
+            <video
+              class="prediction-video sync-prediction-video"
+              muted
+              playsinline
+              preload="auto"
+              aria-label="Real-trained MONAI U-Net prediction"
+            >
+              <source
+                src="assets/videos/MONAI/982880_R3664297_SWAN_real_trained_monai_u_net.mp4"
+                type="video/mp4"
+              />
+            </video>
 
-            <img
-              class="prediction-gif"
-              src="assets/gifs/MONAI/982880_R3664297_SWAN_synth_trained_monai_u_net.gif"
-              alt="Synth-trained MONAI U-Net prediction"
-            />
+            <video
+              class="prediction-video sync-prediction-video"
+              muted
+              playsinline
+              preload="auto"
+              aria-label="Synth-trained MONAI U-Net prediction"
+            >
+              <source
+                src="assets/videos/MONAI/982880_R3664297_SWAN_synth_trained_monai_u_net.mp4"
+                type="video/mp4"
+              />
+            </video>
           </div>
         </div>
       </section>
@@ -175,11 +203,18 @@
               <span class="model-score">0.749</span>
               <p>Lesion sensitivity<br />with synthetic-only training</p>
 
-              <img
-                class="model-gif"
-                src="assets/gifs/MONAI/982880_R3664297_SWAN_synth_trained_monai_u_net.gif"
-                alt="Synthetic-trained MONAI 3D U-Net prediction"
-              />
+              <video
+                class="model-video sync-model-video"
+                muted
+                playsinline
+                preload="auto"
+                aria-label="Synthetic-trained MONAI 3D U-Net prediction"
+              >
+                <source
+                  src="assets/videos/MONAI/982880_R3664297_SWAN_synth_trained_monai_u_net.mp4"
+                  type="video/mp4"
+                />
+              </video>
             </div>
 
             <div class="model-card">
@@ -188,11 +223,18 @@
               <span class="model-score">0.269</span>
               <p>Lesion sensitivity<br />with synthetic-only training</p>
 
-              <img
-                class="model-gif"
-                src="assets/gifs/nnUNet/982880_R3664297_SWAN_synth_trained_nnu_net.gif"
-                alt="Synthetic-trained nnU-Net prediction"
-              />
+              <video
+                class="model-video sync-model-video"
+                muted
+                playsinline
+                preload="auto"
+                aria-label="Synthetic-trained nnU-Net prediction"
+              >
+                <source
+                  src="assets/videos/nnUNet/982880_R3664297_SWAN_synth_trained_nnu_net.mp4"
+                  type="video/mp4"
+                />
+              </video>
             </div>
           </div>
         </div>
@@ -290,5 +332,65 @@
         <p>Synth-2-Real Transfer in Microbleed Generation and Segmentation</p>
       </div>
     </footer>
+
+    <script>
+      function syncVideoGroup(selector) {
+        const videos = Array.from(document.querySelectorAll(selector));
+
+        if (videos.length < 2) return;
+
+        const master = videos[0];
+
+        const readyPromises = videos.map(
+          (video) =>
+            new Promise((resolve) => {
+              if (video.readyState >= 3) {
+                resolve();
+              } else {
+                video.addEventListener("canplay", resolve, { once: true });
+              }
+            }),
+        );
+
+        Promise.all(readyPromises).then(() => {
+          function playTogether() {
+            videos.forEach((video) => {
+              video.pause();
+              video.currentTime = 0;
+            });
+
+            Promise.all(videos.map((video) => video.play())).catch(() => {
+              // Browser autoplay settings may occasionally block playback.
+            });
+          }
+
+          playTogether();
+
+          function keepInSync() {
+            videos.slice(1).forEach((video) => {
+              const drift = Math.abs(video.currentTime - master.currentTime);
+
+              if (drift > 0.08) {
+                video.currentTime = master.currentTime;
+              }
+            });
+
+            if (!master.ended) {
+              requestAnimationFrame(keepInSync);
+            }
+          }
+
+          requestAnimationFrame(keepInSync);
+
+          master.addEventListener("ended", () => {
+            playTogether();
+            requestAnimationFrame(keepInSync);
+          });
+        });
+      }
+
+      syncVideoGroup(".sync-prediction-video");
+      syncVideoGroup(".sync-model-video");
+    </script>
   </body>
 </html>
