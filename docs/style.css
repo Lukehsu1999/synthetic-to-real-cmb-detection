@@ -501,3 +501,17 @@ footer p {
     grid-template-columns: 1fr;
   }
 }
+
+.model-gif {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 28px;
+  border-radius: 8px;
+}
+
+@media (max-width: 650px) {
+  .model-grid {
+    grid-template-columns: 1fr;
+  }
+}
