@@ -43,7 +43,7 @@ Synthetic-to-real transfer was strongly **architecture-dependent**.
 
 Clinical imaging data are not publicly distributed due to privacy and institutional restrictions. For potential research collaborations, please contact the corresponding author, Dr. Wei-Chun Wang (017141@tool.caaumed.org.tw).
 
-### 🔬 Repository Structure
+### Repository Structure
 
 | Stage | Directory | What it does | Documentation |
 |-------|-----------|--------------|---------------|

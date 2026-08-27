@@ -1,0 +1,481 @@
+/* =========================================================
+   BASE
+   ========================================================= */
+
+:root {
+  --text: #172033;
+  --muted: #667085;
+  --accent: #3157d5;
+  --background: #ffffff;
+  --background-alt: #f7f8fb;
+  --border: #e2e6ee;
+  --placeholder: #f1f3f7;
+
+  --max-width: 1100px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  color: var(--text);
+  background: var(--background);
+  line-height: 1.65;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  width: min(90%, var(--max-width));
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+h1,
+h2,
+h3 {
+  line-height: 1.15;
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 28px;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  letter-spacing: -0.055em;
+}
+
+h2 {
+  margin-bottom: 24px;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: -0.035em;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+p {
+  margin-top: 0;
+}
+
+.section-number,
+.eyebrow {
+  margin-bottom: 16px;
+
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.section-intro {
+  max-width: 760px;
+  margin-bottom: 48px;
+
+  color: var(--muted);
+  font-size: 1.15rem;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+  min-height: 100vh;
+  padding: 120px 0 90px;
+
+  display: flex;
+  align-items: center;
+}
+
+.hero-content {
+  text-align: center;
+}
+
+.hero .eyebrow {
+  margin-bottom: 24px;
+}
+
+.hero-question {
+  max-width: 760px;
+  margin: 0 auto 20px;
+
+  font-size: clamp(1.35rem, 2.5vw, 1.8rem);
+  font-weight: 500;
+}
+
+.hero-description {
+  max-width: 720px;
+  margin: 0 auto 36px;
+
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.hero-links {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+
+  margin-bottom: 64px;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.button {
+  display: inline-block;
+  padding: 11px 22px;
+
+  border: 1px solid var(--text);
+  border-radius: 7px;
+
+  font-weight: 600;
+
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.button:hover {
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.button.primary {
+  color: white;
+  background: var(--text);
+}
+
+.button.secondary {
+  color: var(--text);
+  background: transparent;
+}
+
+
+/* =========================================================
+   SECTIONS
+   ========================================================= */
+
+section {
+  padding: 110px 0;
+}
+
+section.alternate {
+  background: var(--background-alt);
+}
+
+
+/* =========================================================
+   IMAGE PLACEHOLDERS
+
+   Replace these divs later with:
+
+   <img src="assets/images/example.png" alt="...">
+
+   or
+
+   <img src="assets/gifs/example.gif" alt="...">
+   ========================================================= */
+
+.figure-placeholder {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 32px;
+
+  color: #98a2b3;
+  background: var(--placeholder);
+
+  border: 2px dashed #cfd5df;
+  border-radius: 12px;
+
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.figure-placeholder.large {
+  min-height: 430px;
+}
+
+.figure-placeholder.wide {
+  min-height: 400px;
+}
+
+.figure-placeholder.square {
+  aspect-ratio: 1 / 1;
+}
+
+.figure-placeholder.gif {
+  aspect-ratio: 4 / 3;
+}
+
+.figure-placeholder.gif.small {
+  margin-top: 28px;
+}
+
+
+/* =========================================================
+   REAL VS SYNTH COMPARISON
+   ========================================================= */
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 36px;
+
+  margin-top: 52px;
+}
+
+.comparison-grid h3 {
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.detail-link {
+  margin-top: 32px;
+  text-align: center;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   MAIN METRICS
+   ========================================================= */
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+
+  max-width: 850px;
+  margin: 50px 0;
+}
+
+.metric {
+  padding: 36px;
+
+  border-left: 3px solid var(--accent);
+}
+
+.metric-value {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 750;
+  letter-spacing: -0.06em;
+  line-height: 1;
+}
+
+.metric-label {
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+
+/* =========================================================
+   MODEL DEPENDENCY
+   ========================================================= */
+
+.model-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+
+  margin-top: 48px;
+}
+
+.model-card {
+  padding: 36px;
+
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.model-score {
+  display: block;
+
+  margin: 26px 0 8px;
+
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 750;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.model-card p {
+  color: var(--muted);
+}
+
+
+/* =========================================================
+   CAPTIONS
+   ========================================================= */
+
+.caption {
+  max-width: 760px;
+  margin: 24px auto 0;
+
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+
+/* =========================================================
+   TAKEAWAYS
+   ========================================================= */
+
+.takeaways {
+  background: var(--text);
+  color: white;
+}
+
+.takeaways .section-number {
+  color: #aabaff;
+}
+
+.takeaway-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+
+  margin-top: 56px;
+}
+
+.takeaway-number {
+  display: block;
+
+  margin-bottom: 22px;
+
+  color: #aabaff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.takeaway-grid h3 {
+  font-size: 1.35rem;
+}
+
+.takeaway-grid p {
+  color: #cbd1dc;
+}
+
+
+/* =========================================================
+   PROJECT LINKS
+   ========================================================= */
+
+.project-links {
+  text-align: center;
+}
+
+.project-links p {
+  max-width: 600px;
+  margin: 0 auto 32px;
+
+  color: var(--muted);
+}
+
+.project-links .hero-links {
+  margin-bottom: 0;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+  padding: 36px 0;
+
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 750px) {
+
+  .hero {
+    min-height: auto;
+    padding: 90px 0 70px;
+  }
+
+  section {
+    padding: 80px 0;
+  }
+
+  .comparison-grid,
+  .metric-grid,
+  .model-grid,
+  .takeaway-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metric {
+    padding: 28px 20px;
+  }
+
+  .figure-placeholder.large,
+  .figure-placeholder.wide {
+    min-height: 260px;
+  }
+
+}
