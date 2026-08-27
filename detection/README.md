@@ -5,7 +5,7 @@ For cerebral microbleed (CMB) detection, we use a configurable MONAI 3D U-Net as
 
 Lightweight MONAI-based 3D U-Net training and inference scripts for cerebral microbleed (CMB) segmentation.
 
-## Structure
+### Structure
 
 ```text
 monai/
@@ -16,7 +16,7 @@ monai/
 └── infer.py
 ```
 
-## Data Format
+### Data Format
 
 Training images and labels should be NIfTI files (`.nii` or `.nii.gz`).
 
@@ -32,7 +32,7 @@ labelsTr/
 └── case002.nii.gz
 ```
 
-## Training
+### Training
 
 Training is config-driven. **Do not modify `train.py` for individual experiments.** Instead, copy the sample config and create a new YAML file under `configs/`:
 
@@ -65,7 +65,7 @@ config_resolved.yaml
 
 Training metrics are logged with Weights & Biases.
 
-## Inference
+### Inference
 
 Run inference using a training config and checkpoint:
 
@@ -91,11 +91,11 @@ python infer.py \
 
 Predictions are saved as NIfTI files in the original image space.
 
-## Dependencies
+### Dependencies
 
 Core dependencies include Python, PyTorch, MONAI, NumPy, NiBabel, PyYAML, and Weights & Biases.
 
-## Supporting Scripts
+### Supporting Scripts
 In /other_training_scripts
 
 # nnUNet
