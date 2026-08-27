@@ -101,27 +101,6 @@
       </section>
 
       <!-- =========================================================
-         REAL VS SYNTHETIC DISTRIBUTIONS
-         ========================================================= -->
-      <section id="comparison" class="alternate">
-        <div class="container">
-          <p class="section-number">02</p>
-          <h2>How Close Are Synthetic CMBs to Real Ones?</h2>
-
-          <p class="section-intro">
-            Synthetic lesions approximate real CMB size and intensity
-            distributions, while measurable differences remain in
-            characteristics such as elongation and background-to-lesion
-            contrast.
-          </p>
-
-          <div class="figure-placeholder wide">
-            <span>PLACEHOLDER — Real vs. Synthetic Distributions (Fig. 6)</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- =========================================================
          MAIN RESULT
          ========================================================= -->
       <section id="transfer">
@@ -148,20 +127,30 @@
             substantial detection performance when evaluated on real CMBs.
           </p>
 
-          <div class="comparison-grid">
-            <div>
-              <h3>Real-Trained</h3>
-              <div class="figure-placeholder gif">
-                <span>PLACEHOLDER — Real-Trained Prediction GIF</span>
-              </div>
-            </div>
+          <div class="prediction-grid">
+            <img
+              class="prediction-gif"
+              src="assets/gifs/MONAI/982880_R3664297_SWAN_original.gif"
+              alt="Original SWAN MRI"
+            />
 
-            <div>
-              <h3>Synth-Trained</h3>
-              <div class="figure-placeholder gif">
-                <span>PLACEHOLDER — Synth-Trained Prediction GIF</span>
-              </div>
-            </div>
+            <img
+              class="prediction-gif"
+              src="assets/gifs/MONAI/982880_R3664297_SWAN_ground_truth.gif"
+              alt="Ground-truth CMB segmentation"
+            />
+
+            <img
+              class="prediction-gif"
+              src="assets/gifs/MONAI/982880_R3664297_SWAN_real_trained_monai_u_net.gif"
+              alt="Real-trained MONAI U-Net prediction"
+            />
+
+            <img
+              class="prediction-gif"
+              src="assets/gifs/synth_trained.gif"
+              alt="assets/gifs/MONAI/982880_R3664297_SWAN_synth_trained_monai_u_net.gif"
+            />
           </div>
         </div>
       </section>
