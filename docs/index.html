@@ -1,333 +1,299 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Synth-2-Real Transfer in Microbleed Detection</title>
+    <title>Synth-2-Real Transfer in Microbleed Detection</title>
 
-  <meta
-    name="description"
-    content="Investigating whether synthetic cerebral microbleeds can train deep learning models to detect real lesions."
-  >
+    <meta
+      name="description"
+      content="Investigating whether synthetic cerebral microbleeds can train deep learning models to detect real lesions."
+    />
 
-  <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body>
-
-  <!-- =========================================================
+  <body>
+    <!-- =========================================================
        HERO
        ========================================================= -->
-  <header class="hero">
-    <div class="container hero-content">
+    <header class="hero">
+      <div class="container hero-content">
+        <p class="eyebrow">Medical Imaging · Synthetic Data · Deep Learning</p>
 
-      <p class="eyebrow">Medical Imaging · Synthetic Data · Deep Learning</p>
+        <h1>
+          Synth-2-Real Transfer in<br />
+          Microbleed Detection
+        </h1>
 
-      <h1>
-        Synth-2-Real Transfer in<br>
-        Microbleed Detection
-      </h1>
-
-      <p class="hero-question">
-        Can synthetic cerebral microbleeds teach a detector
-        to recognize real ones?
-      </p>
-
-      <p class="hero-description">
-        We generate controllable synthetic cerebral microbleeds on real
-        CMB-negative SWAN MRI and study how well detectors trained on them
-        transfer to real clinical lesions.
-      </p>
-
-      <div class="hero-links">
-        <!-- TODO: replace # with actual links -->
-        <a class="button primary" href="#">Paper</a>
-        <a class="button secondary" href="#">GitHub</a>
-      </div>
-
-      <div class="figure-placeholder large">
-        <span>PLACEHOLDER — Study Overview (Fig. 1)</span>
-      </div>
-
-    </div>
-  </header>
-
-
-  <main>
-
-    <!-- =========================================================
-         SYNTHETIC CMB GENERATION
-         ========================================================= -->
-    <section id="generation">
-      <div class="container">
-
-        <p class="section-number">01</p>
-        <h2>Generating Synthetic Microbleeds</h2>
-
-        <p class="section-intro">
-          Synthetic lesions are parameterized by size, shape, orientation,
-          signal contrast, and boundary appearance, then inserted into
-          real CMB-negative SWAN images.
+        <p class="hero-question">
+          Can synthetic cerebral microbleeds teach a detector to recognize real
+          ones?
         </p>
 
-        <div class="figure-placeholder wide">
-          <span>PLACEHOLDER — Synthetic CMB Generation Pipeline (Fig. 4)</span>
-        </div>
-
-        <div class="comparison-grid">
-
-          <div>
-            <h3>Real CMB</h3>
-            <div class="figure-placeholder square">
-              <span>PLACEHOLDER — Real CMB</span>
-            </div>
-          </div>
-
-          <div>
-            <h3>Synthetic CMB</h3>
-            <div class="figure-placeholder square">
-              <span>PLACEHOLDER — Synthetic CMB</span>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- TODO: link directly to synthesis/ README -->
-        <p class="detail-link">
-          <a href="#">Explore the synthesis implementation →</a>
-        </p>
-
-      </div>
-    </section>
-
-
-    <!-- =========================================================
-         REAL VS SYNTHETIC DISTRIBUTIONS
-         ========================================================= -->
-    <section id="comparison" class="alternate">
-      <div class="container">
-
-        <p class="section-number">02</p>
-        <h2>How Close Are Synthetic CMBs to Real Ones?</h2>
-
-        <p class="section-intro">
-          Synthetic lesions approximate real CMB size and intensity
-          distributions, while measurable differences remain in characteristics
-          such as elongation and background-to-lesion contrast.
-        </p>
-
-        <div class="figure-placeholder wide">
-          <span>PLACEHOLDER — Real vs. Synthetic Distributions (Fig. 6)</span>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- =========================================================
-         MAIN RESULT
-         ========================================================= -->
-    <section id="transfer">
-      <div class="container">
-
-        <p class="section-number">03</p>
-        <h2>Synthetic → Real Transfer Works</h2>
-
-        <div class="metric-grid">
-
-          <div class="metric">
-            <span class="metric-value">87.7%</span>
-            <span class="metric-label">
-              of real-trained lesion sensitivity retained
-            </span>
-          </div>
-
-          <div class="metric">
-            <span class="metric-value">83.7%</span>
-            <span class="metric-label">
-              of real-trained Dice retained
-            </span>
-          </div>
-
-        </div>
-
-        <p class="section-intro">
-          A MONAI 3D U-Net trained exclusively on synthetic lesions
-          retained substantial detection performance when evaluated on
-          real CMBs.
-        </p>
-
-        <div class="comparison-grid">
-
-          <div>
-            <h3>Real-Trained</h3>
-            <div class="figure-placeholder gif">
-              <span>PLACEHOLDER — Real-Trained Prediction GIF</span>
-            </div>
-          </div>
-
-          <div>
-            <h3>Synth-Trained</h3>
-            <div class="figure-placeholder gif">
-              <span>PLACEHOLDER — Synth-Trained Prediction GIF</span>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- =========================================================
-         MODEL DEPENDENCY
-         ========================================================= -->
-    <section id="model-dependency" class="alternate">
-      <div class="container">
-
-        <p class="section-number">04</p>
-        <h2>But Transfer Depends on the Detector</h2>
-
-        <p class="section-intro">
-          Synthetic-to-real transfer differed substantially between the two
-          evaluated segmentation frameworks.
-        </p>
-
-        <div class="model-grid">
-
-          <div class="model-card">
-            <h3>MONAI 3D U-Net</h3>
-
-            <span class="model-score">0.749</span>
-            <p>Lesion sensitivity<br>with synthetic-only training</p>
-
-            <div class="figure-placeholder gif small">
-              <span>PLACEHOLDER — MONAI Synth Prediction GIF</span>
-            </div>
-          </div>
-
-          <div class="model-card">
-            <h3>nnU-Net</h3>
-
-            <span class="model-score">0.269</span>
-            <p>Lesion sensitivity<br>with synthetic-only training</p>
-
-            <div class="figure-placeholder gif small">
-              <span>PLACEHOLDER — nnU-Net Synth Prediction GIF</span>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- =========================================================
-         SYNTH-2-REAL CHALLENGE
-         ========================================================= -->
-    <section id="challenge">
-      <div class="container">
-
-        <p class="section-number">05</p>
-        <h2>The Synth-2-Real Challenge</h2>
-
-        <p class="section-intro">
-          Successful transfer may depend not only on the realism of synthetic
-          lesions, but also on how the downstream model learns from the
-          synthetic distribution.
-        </p>
-
-        <div class="figure-placeholder wide">
-          <span>PLACEHOLDER — Synth-2-Real Concept (Fig. 13)</span>
-        </div>
-
-        <p class="caption">
-          Our experiments demonstrate framework-dependent transfer, but do not
-          identify the specific mechanism responsible for the difference.
-        </p>
-
-      </div>
-    </section>
-
-
-    <!-- =========================================================
-         TAKEAWAYS
-         ========================================================= -->
-    <section id="takeaways" class="takeaways">
-      <div class="container">
-
-        <p class="section-number">06</p>
-        <h2>Takeaways</h2>
-
-        <div class="takeaway-grid">
-
-          <article>
-            <span class="takeaway-number">01</span>
-            <h3>Synthetic supervision works.</h3>
-            <p>
-              Models trained without real positive annotations can still
-              transfer substantially to real CMB detection.
-            </p>
-          </article>
-
-          <article>
-            <span class="takeaway-number">02</span>
-            <h3>Real data remains stronger.</h3>
-            <p>
-              Real-trained models consistently outperformed synthetic-trained
-              models across the evaluated data scales.
-            </p>
-          </article>
-
-          <article>
-            <span class="takeaway-number">03</span>
-            <h3>Transfer is framework-dependent.</h3>
-            <p>
-              Synthetic data transferred substantially with MONAI but poorly
-              with nnU-Net.
-            </p>
-          </article>
-
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- =========================================================
-         PROJECT LINKS
-         ========================================================= -->
-    <section id="project-links" class="project-links">
-      <div class="container">
-
-        <h2>Explore the Project</h2>
-
-        <p>
-          Read the full study or explore the implementation and
-          reproducibility pipeline.
+        <p class="hero-description">
+          We generate controllable synthetic cerebral microbleeds on real
+          CMB-negative SWAN MRI and study how well detectors trained on them
+          transfer to real clinical lesions.
         </p>
 
         <div class="hero-links">
-          <!-- TODO: replace # with actual URLs -->
-          <a class="button primary" href="#">Read the Paper</a>
-          <a class="button secondary" href="#">View on GitHub</a>
+          <!-- TODO: replace # with actual links -->
+          <a class="button primary" href="#">Paper</a>
+          <a class="button secondary" href="#">GitHub</a>
         </div>
 
+        <img
+          class="figure-image large"
+          src="assets/images/study_overview.png"
+          alt="Overview of the synthetic-to-real CMB detection framework"
+        />
       </div>
-    </section>
+    </header>
 
-  </main>
+    <main>
+      <!-- =========================================================
+         SYNTHETIC CMB GENERATION
+         ========================================================= -->
+      <section id="generation">
+        <div class="container">
+          <p class="section-number">01</p>
+          <h2>Generating Synthetic Microbleeds</h2>
 
+          <p class="section-intro">
+            Synthetic lesions are parameterized by size, shape, orientation,
+            signal contrast, and boundary appearance, then inserted into real
+            CMB-negative SWAN images.
+          </p>
 
-  <footer>
-    <div class="container">
-      <p>
-        Synth-2-Real Transfer in Microbleed Generation and Segmentation
-      </p>
-    </div>
-  </footer>
+          <img
+            class="figure-image large"
+            src="assets/images/synthesis_pipeline.png"
+            alt="Synthetic CMB generation pipeline"
+          />
 
-</body>
+          <div class="comparison-grid">
+            <div>
+              <h3>Real CMB</h3>
+              <img
+                class="comparison-image"
+                src="assets/images/realCMB_Sample_140387_R3592810_lesion_004_orthogonal_views.png"
+                alt="Real cerebral microbleed example"
+              />
+            </div>
+
+            <div>
+              <h3>Synthetic CMB</h3>
+              <img
+                class="comparison-image"
+                src="assets/images/synthCMB_Sample_172664_R3505356_lesion_003_orthogonal_views.png"
+                alt="Synthetic cerebral microbleed example"
+              />
+            </div>
+          </div>
+
+          <!-- TODO: link directly to synthesis/ README -->
+          <p class="detail-link">
+            <a href="#">Explore the synthesis implementation →</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- =========================================================
+         REAL VS SYNTHETIC DISTRIBUTIONS
+         ========================================================= -->
+      <section id="comparison" class="alternate">
+        <div class="container">
+          <p class="section-number">02</p>
+          <h2>How Close Are Synthetic CMBs to Real Ones?</h2>
+
+          <p class="section-intro">
+            Synthetic lesions approximate real CMB size and intensity
+            distributions, while measurable differences remain in
+            characteristics such as elongation and background-to-lesion
+            contrast.
+          </p>
+
+          <div class="figure-placeholder wide">
+            <span>PLACEHOLDER — Real vs. Synthetic Distributions (Fig. 6)</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+         MAIN RESULT
+         ========================================================= -->
+      <section id="transfer">
+        <div class="container">
+          <p class="section-number">03</p>
+          <h2>Synthetic → Real Transfer Works</h2>
+
+          <div class="metric-grid">
+            <div class="metric">
+              <span class="metric-value">87.7%</span>
+              <span class="metric-label">
+                of real-trained lesion sensitivity retained
+              </span>
+            </div>
+
+            <div class="metric">
+              <span class="metric-value">83.7%</span>
+              <span class="metric-label"> of real-trained Dice retained </span>
+            </div>
+          </div>
+
+          <p class="section-intro">
+            A MONAI 3D U-Net trained exclusively on synthetic lesions retained
+            substantial detection performance when evaluated on real CMBs.
+          </p>
+
+          <div class="comparison-grid">
+            <div>
+              <h3>Real-Trained</h3>
+              <div class="figure-placeholder gif">
+                <span>PLACEHOLDER — Real-Trained Prediction GIF</span>
+              </div>
+            </div>
+
+            <div>
+              <h3>Synth-Trained</h3>
+              <div class="figure-placeholder gif">
+                <span>PLACEHOLDER — Synth-Trained Prediction GIF</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+         MODEL DEPENDENCY
+         ========================================================= -->
+      <section id="model-dependency" class="alternate">
+        <div class="container">
+          <p class="section-number">04</p>
+          <h2>But Transfer Depends on the Detector</h2>
+
+          <p class="section-intro">
+            Synthetic-to-real transfer differed substantially between the two
+            evaluated segmentation frameworks.
+          </p>
+
+          <div class="model-grid">
+            <div class="model-card">
+              <h3>MONAI 3D U-Net</h3>
+
+              <span class="model-score">0.749</span>
+              <p>Lesion sensitivity<br />with synthetic-only training</p>
+
+              <div class="figure-placeholder gif small">
+                <span>PLACEHOLDER — MONAI Synth Prediction GIF</span>
+              </div>
+            </div>
+
+            <div class="model-card">
+              <h3>nnU-Net</h3>
+
+              <span class="model-score">0.269</span>
+              <p>Lesion sensitivity<br />with synthetic-only training</p>
+
+              <div class="figure-placeholder gif small">
+                <span>PLACEHOLDER — nnU-Net Synth Prediction GIF</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+         SYNTH-2-REAL CHALLENGE
+         ========================================================= -->
+      <section id="challenge">
+        <div class="container">
+          <p class="section-number">05</p>
+          <h2>The Synth-2-Real Challenge</h2>
+
+          <p class="section-intro">
+            Successful transfer may depend not only on the realism of synthetic
+            lesions, but also on how the downstream model learns from the
+            synthetic distribution.
+          </p>
+
+          <div class="figure-placeholder wide">
+            <span>PLACEHOLDER — Synth-2-Real Concept (Fig. 13)</span>
+          </div>
+
+          <p class="caption">
+            Our experiments demonstrate framework-dependent transfer, but do not
+            identify the specific mechanism responsible for the difference.
+          </p>
+        </div>
+      </section>
+
+      <!-- =========================================================
+         TAKEAWAYS
+         ========================================================= -->
+      <section id="takeaways" class="takeaways">
+        <div class="container">
+          <p class="section-number">06</p>
+          <h2>Takeaways</h2>
+
+          <div class="takeaway-grid">
+            <article>
+              <span class="takeaway-number">01</span>
+              <h3>Synthetic supervision works.</h3>
+              <p>
+                Models trained without real positive annotations can still
+                transfer substantially to real CMB detection.
+              </p>
+            </article>
+
+            <article>
+              <span class="takeaway-number">02</span>
+              <h3>Real data remains stronger.</h3>
+              <p>
+                Real-trained models consistently outperformed synthetic-trained
+                models across the evaluated data scales.
+              </p>
+            </article>
+
+            <article>
+              <span class="takeaway-number">03</span>
+              <h3>Transfer is framework-dependent.</h3>
+              <p>
+                Synthetic data transferred substantially with MONAI but poorly
+                with nnU-Net.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+         PROJECT LINKS
+         ========================================================= -->
+      <section id="project-links" class="project-links">
+        <div class="container">
+          <h2>Explore the Project</h2>
+
+          <p>
+            Read the full study or explore the implementation and
+            reproducibility pipeline.
+          </p>
+
+          <div class="hero-links">
+            <!-- TODO: replace # with actual URLs -->
+            <a class="button primary" href="#">Read the Paper</a>
+            <a class="button secondary" href="#">View on GitHub</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>Synth-2-Real Transfer in Microbleed Generation and Segmentation</p>
+      </div>
+    </footer>
+  </body>
 </html>
