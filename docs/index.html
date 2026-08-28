@@ -133,13 +133,19 @@
           </p>
 
           <div class="prediction-grid">
-            <video
+            <!-- <video
               class="prediction-video sync-prediction-video"
               muted
               playsinline
               preload="auto"
               aria-label="Original SWAN MRI"
             >
+              <source
+                src="assets/videos/MONAI/982880_R3664297_SWAN_original.mp4"
+                type="video/mp4"
+              />
+            </video> -->
+            <video controls autoplay muted loop playsinline style="width: 100%">
               <source
                 src="assets/videos/MONAI/982880_R3664297_SWAN_original.mp4"
                 type="video/mp4"
@@ -394,8 +400,8 @@
         });
       }
 
-      syncVideoGroup(".sync-prediction-video");
-      syncVideoGroup(".sync-model-video");
+    //   syncVideoGroup(".sync-prediction-video");
+    //   syncVideoGroup(".sync-model-video");
     </script>
   </body>
 </html>
