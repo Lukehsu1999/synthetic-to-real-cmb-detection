@@ -2,6 +2,8 @@
 
 This repository provides a reproducible pipeline for studying synthetic-to-real transfer in cerebral microbleed (CMB) detection on SWAN MRI. We investigate whether synthetically generated CMBs can provide effective supervision for training models that detect real CMBs.
 
+Authors: Luke To-Liang Hsu, Ting-Yu Lai, Ching-Ting Lin, Chun-Hao Huang, Wei-Chun Wang
+
 ────────────────────────────────────
 
 ## 💡 Synthetic-to-Real CMB Detection
