@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -81,6 +82,7 @@
           <div class="comparison-grid">
             <div>
               <h3>Real CMB</h3>
+
               <img
                 class="comparison-image"
                 src="assets/images/realCMB_Sample_140387_R3592810_lesion_004_orthogonal_views.png"
@@ -90,6 +92,7 @@
 
             <div>
               <h3>Synthetic CMB</h3>
+
               <img
                 class="comparison-image"
                 src="assets/images/synthCMB_Sample_172664_R3505356_lesion_003_orthogonal_views.png"
@@ -116,6 +119,7 @@
           <div class="metric-grid">
             <div class="metric">
               <span class="metric-value">87.7%</span>
+
               <span class="metric-label">
                 of real-trained lesion sensitivity retained
               </span>
@@ -123,7 +127,10 @@
 
             <div class="metric">
               <span class="metric-value">83.7%</span>
-              <span class="metric-label"> of real-trained Dice retained </span>
+
+              <span class="metric-label">
+                of real-trained Dice retained
+              </span>
             </div>
           </div>
 
@@ -133,8 +140,9 @@
           </p>
 
           <div class="prediction-grid">
-            <!-- <video
+            <video
               class="prediction-video sync-prediction-video"
+              autoplay
               muted
               playsinline
               preload="auto"
@@ -144,16 +152,11 @@
                 src="assets/videos/MONAI/982880_R3664297_SWAN_original.mp4"
                 type="video/mp4"
               />
-            </video> -->
-            <video controls autoplay muted loop playsinline style="width: 100%">
-              <source
-                src="assets/videos/MONAI/982880_R3664297_SWAN_original.mp4"
-                type="video/mp4"
-              />
             </video>
 
             <video
               class="prediction-video sync-prediction-video"
+              autoplay
               muted
               playsinline
               preload="auto"
@@ -167,6 +170,7 @@
 
             <video
               class="prediction-video sync-prediction-video"
+              autoplay
               muted
               playsinline
               preload="auto"
@@ -180,6 +184,7 @@
 
             <video
               class="prediction-video sync-prediction-video"
+              autoplay
               muted
               playsinline
               preload="auto"
@@ -200,6 +205,7 @@
       <section id="model-dependency" class="alternate">
         <div class="container">
           <p class="section-number">04</p>
+
           <h2>But Transfer Depends on the Detector</h2>
 
           <p class="section-intro">
@@ -212,10 +218,15 @@
               <h3>MONAI 3D U-Net</h3>
 
               <span class="model-score">0.749</span>
-              <p>Lesion sensitivity<br />with synthetic-only training</p>
+
+              <p>
+                Lesion sensitivity<br />
+                with synthetic-only training
+              </p>
 
               <video
                 class="model-video sync-model-video"
+                autoplay
                 muted
                 playsinline
                 preload="auto"
@@ -232,10 +243,15 @@
               <h3>nnU-Net</h3>
 
               <span class="model-score">0.269</span>
-              <p>Lesion sensitivity<br />with synthetic-only training</p>
+
+              <p>
+                Lesion sensitivity<br />
+                with synthetic-only training
+              </p>
 
               <video
                 class="model-video sync-model-video"
+                autoplay
                 muted
                 playsinline
                 preload="auto"
@@ -257,6 +273,7 @@
       <section id="challenge">
         <div class="container">
           <p class="section-number">05</p>
+
           <h2>The Synth-2-Real Challenge</h2>
 
           <p class="section-intro">
@@ -284,12 +301,15 @@
       <section id="takeaways" class="takeaways">
         <div class="container">
           <p class="section-number">06</p>
+
           <h2>Takeaways</h2>
 
           <div class="takeaway-grid">
             <article>
               <span class="takeaway-number">01</span>
+
               <h3>Synthetic supervision works.</h3>
+
               <p>
                 Models trained without real positive annotations can still
                 transfer substantially to real CMB detection.
@@ -298,7 +318,9 @@
 
             <article>
               <span class="takeaway-number">02</span>
+
               <h3>Real data remains stronger.</h3>
+
               <p>
                 Real-trained models consistently outperformed synthetic-trained
                 models across the evaluated data scales.
@@ -307,7 +329,9 @@
 
             <article>
               <span class="takeaway-number">03</span>
+
               <h3>Transfer is framework-dependent.</h3>
+
               <p>
                 Synthetic data transferred substantially with MONAI but poorly
                 with nnU-Net.
@@ -352,56 +376,66 @@
 
         const master = videos[0];
 
+        function playVideo(video) {
+          video.play().catch((error) => {
+            console.warn("Video autoplay failed:", video.currentSrc, error);
+          });
+        }
+
+        function restartTogether() {
+          videos.forEach((video) => {
+            video.pause();
+            video.currentTime = 0;
+          });
+
+          videos.forEach((video) => {
+            playVideo(video);
+          });
+        }
+
+        function keepInSync() {
+          if (!master.paused && !master.ended) {
+            videos.slice(1).forEach((video) => {
+              const drift = video.currentTime - master.currentTime;
+
+              if (Math.abs(drift) > 0.08) {
+                video.currentTime = master.currentTime;
+              }
+
+              if (video.paused) {
+                playVideo(video);
+              }
+            });
+          }
+
+          requestAnimationFrame(keepInSync);
+        }
+
         const readyPromises = videos.map(
           (video) =>
             new Promise((resolve) => {
               if (video.readyState >= 3) {
                 resolve();
               } else {
-                video.addEventListener("canplay", resolve, { once: true });
+                video.addEventListener("canplay", resolve, {
+                  once: true,
+                });
               }
             }),
         );
 
         Promise.all(readyPromises).then(() => {
-          function playTogether() {
-            videos.forEach((video) => {
-              video.pause();
-              video.currentTime = 0;
-            });
-
-            Promise.all(videos.map((video) => video.play())).catch(() => {
-              // Browser autoplay settings may occasionally block playback.
-            });
-          }
-
-          playTogether();
-
-          function keepInSync() {
-            videos.slice(1).forEach((video) => {
-              const drift = Math.abs(video.currentTime - master.currentTime);
-
-              if (drift > 0.08) {
-                video.currentTime = master.currentTime;
-              }
-            });
-
-            if (!master.ended) {
-              requestAnimationFrame(keepInSync);
-            }
-          }
-
+          restartTogether();
           requestAnimationFrame(keepInSync);
+        });
 
-          master.addEventListener("ended", () => {
-            playTogether();
-            requestAnimationFrame(keepInSync);
-          });
+        master.addEventListener("ended", () => {
+          restartTogether();
         });
       }
 
-    //   syncVideoGroup(".sync-prediction-video");
-    //   syncVideoGroup(".sync-model-video");
+      syncVideoGroup(".sync-prediction-video");
+      syncVideoGroup(".sync-model-video");
     </script>
   </body>
 </html>
