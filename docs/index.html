@@ -37,12 +37,6 @@
           ones?
         </p>
 
-        <p class="hero-description">
-          We generate controllable synthetic cerebral microbleeds on real
-          CMB-negative SWAN MRI and study how well detectors trained on them
-          transfer to real clinical lesions.
-        </p>
-
         <div class="hero-links">
           <!-- TODO: replace # with actual links -->
           <a class="button primary" href="#">Paper</a>
@@ -72,29 +66,40 @@
             in medical AI.
           </p>
 
-          <div class="motivation-questions">
-            <div class="motivation-block">
-              <p class="motivation-problem">But disease data are scarce.</p>
-              <p>
-                How do we train a model when we have few—or even no—positive
-                patients?
-              </p>
+          <div class="motivation-middle">
+            <div class="motivation-questions">
+              <div class="motivation-block">
+                <p class="motivation-problem">But disease data are scarce.</p>
+                <p>
+                  How do we train a model when we have few—or even no—positive
+                  patients?
+                </p>
+              </div>
+
+              <div class="motivation-block">
+                <p class="motivation-problem">
+                  But expert annotation is expensive.
+                </p>
+                <p>
+                  Can we create useful training targets without labeling every
+                  lesion by hand?
+                </p>
+              </div>
             </div>
 
-            <div class="motivation-block">
-              <p class="motivation-problem">
-                But expert annotation is expensive.
-              </p>
-              <p>
-                Can we create useful training targets without labeling every
-                lesion by hand?
-              </p>
+            <div class="motivation-image-wrapper">
+              <img
+                class="motivation-image"
+                src="assets/images/doctor_labeling_brain.png"
+                alt="Clinician annotating cerebral microbleeds on brain MRI"
+              />
             </div>
           </div>
 
           <div class="motivation-turn">
             <p>
-              <strong>Suppose we could build a proxy disease generator.</strong>
+              Suppose we could build a
+              <strong>synthetic disease generator</strong>.
             </p>
 
             <p class="motivation-final-question">

@@ -265,8 +265,10 @@ section.alternate {
 }
 
 .motivation .container {
-  max-width: 900px;
+  max-width: var(--max-width);
 }
+
+/* Main hook */
 
 .motivation-hook {
   margin-bottom: 28px;
@@ -283,12 +285,23 @@ section.alternate {
   font-size: clamp(1.2rem, 2vw, 1.45rem);
 }
 
-.motivation-questions {
+/* Problems + annotation image */
+
+.motivation-middle {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 56px;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 64px;
+  align-items: stretch;
 
   margin-bottom: 80px;
+}
+
+.motivation-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+
+  margin-bottom: 0;
 }
 
 .motivation-block {
@@ -308,6 +321,27 @@ section.alternate {
   font-weight: 700;
 }
 
+/* Annotation image */
+
+.motivation-image-wrapper {
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.motivation-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+
+  object-fit: cover;
+  object-position: center;
+
+  border-radius: 12px;
+}
+
+/* Turn toward synthetic generation */
+
 .motivation-turn {
   max-width: 820px;
   padding-top: 48px;
@@ -319,41 +353,53 @@ section.alternate {
   margin-bottom: 20px;
 
   color: var(--muted);
-  font-size: 1.15rem;
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  font-weight: 400;
 }
 
 .motivation-final-question {
+  max-width: 760px;
   margin-bottom: 0;
 
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  font-weight: 500;
-  line-height: 1.25;
-  letter-spacing: -0.025em;
+  color: var(--muted);
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: normal;
 }
 
 .motivation-final-question strong {
   color: var(--accent);
+  font-weight: 700;
 }
 
-
 /* Mobile */
-@media (max-width: 750px) {
+
+@media (max-width: 750px) {ß
   .motivation-lead {
     margin-bottom: 48px;
   }
 
-  .motivation-questions {
+  .motivation-middle {
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 40px;
 
     margin-bottom: 56px;
+  }
+
+  .motivation-questions {
+    gap: 36px;
+  }
+
+  .motivation-image {
+    height: auto;
+    min-height: 0;
   }
 
   .motivation-turn {
     padding-top: 36px;
   }
 }
-
 /* =========================================================
    REAL VS SYNTH COMPARISON
    ========================================================= */
