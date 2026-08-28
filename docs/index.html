@@ -43,25 +43,20 @@
           <a class="button secondary" href="#">GitHub</a>
         </div>
 
-        <img
-          class="figure-image large"
-          src="assets/images/study_overview.png"
-          alt="Overview of the synthetic-to-real CMB detection framework"
-        />
       </div>
     </header>
 
     <main>
       <!-- =========================================================
-     MOTIVATION
-     ========================================================= -->
-      <section id="motivation" class="motivation">
+         MOTIVATION
+         ========================================================= -->
+      <section id="motivation" class="motivation alternate">
         <div class="container">
           <p class="section-number">01</p>
 
-          <h2 class="motivation-hook">Data. Labels. Cleaning.</h2>
+          <h2>Data. Labels. Cleaning.</h2>
 
-          <p class="motivation-lead">
+          <p class="section-intro">
             More often than models, these are what set the performance ceiling
             in medical AI.
           </p>
@@ -69,7 +64,7 @@
           <div class="motivation-middle">
             <div class="motivation-questions">
               <div class="motivation-block">
-                <p class="motivation-problem">But disease data are scarce.</p>
+                <h3>But disease data are scarce.</h3>
                 <p>
                   How do we train a model when we have few—or even no—positive
                   patients?
@@ -77,9 +72,7 @@
               </div>
 
               <div class="motivation-block">
-                <p class="motivation-problem">
-                  But expert annotation is expensive.
-                </p>
+                <h3>But expert annotation is expensive.</h3>
                 <p>
                   Can we create useful training targets without labeling every
                   lesion by hand?
@@ -102,7 +95,7 @@
               <strong>synthetic disease generator</strong>.
             </p>
 
-            <p class="motivation-final-question">
+            <p>
               Could a model learn entirely from
               <strong>fake lesions</strong>—and still detect
               <strong>real ones</strong>?
@@ -111,11 +104,96 @@
         </div>
       </section>
       <!-- =========================================================
+   CEREBRAL MICROBLEED BACKGROUND
+   ========================================================= -->
+      <section id="cmb-background">
+        <div class="container">
+          <p class="section-number">02</p>
+
+          <h2>Cerebral Microbleeds</h2>
+
+          <div class="cmb-background-grid">
+            <div class="cmb-background-copy">
+              <p class="section-intro">
+                We chose Cerebral Microbleed as our research target disease.
+              </p>
+              <p class="section-intro">
+                Cerebral microbleeds (CMBs) are tiny signs of previous bleeding
+                in the brain. On certain MRI scans, they appear as small, dark
+                spots—often only a few millimeters across.
+              </p>
+
+              <p class="cmb-background-note">
+                CMB burden is an important imaging biomarker, but detecting and
+                annotating these lesions remains difficult.
+              </p>
+
+              <div class="cmb-traits">
+                <div class="cmb-trait">
+                  <h3>Tiny</h3>
+                  <p>Often only a few millimeters in diameter.</p>
+                </div>
+
+                <div class="cmb-trait">
+                  <h3>Sparse</h3>
+                  <p>
+                    Positive lesions—and even positive patients—can be
+                    relatively scarce.
+                  </p>
+                </div>
+
+                <div class="cmb-trait">
+                  <h3>Easy to mimic</h3>
+                  <p>
+                    Vessels, calcifications, and susceptibility artifacts can
+                    resemble true microbleeds.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <figure class="cmb-background-figure">
+              <img
+                class="cmb-background-image"
+                src="assets/images/Radiopaedia_CMB_example.png"
+                alt="Example of cerebral microbleeds on susceptibility-sensitive MRI"
+              />
+
+              <figcaption>
+                Example cerebral microbleeds on susceptibility-sensitive MRI.
+                Source: Radiopaedia.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+      <!-- =========================================================
+   PROJECT OVERVIEW
+   ========================================================= -->
+      <section id="project-overview" class="alternate">
+        <div class="container">
+          <p class="section-number">03</p>
+
+          <h2>Project Overview</h2>
+
+          <p class="section-intro">
+            Can synthetic CMBs teach a detector to recognize real ones? We
+            tested this in three steps.
+          </p>
+
+          <img
+            class="project-overview-image"
+            src="assets/images/study_overview.png"
+            alt="Overview of the synthetic-to-real CMB detection framework"
+          />
+        </div>
+      </section>
+      <!-- =========================================================
          SYNTHETIC CMB GENERATION
          ========================================================= -->
       <section id="generation">
         <div class="container">
-          <p class="section-number">01</p>
+          <p class="section-number">04</p>
 
           <h2>Generating Synthetic Microbleeds</h2>
 
@@ -165,7 +243,7 @@
          ========================================================= -->
       <section id="transfer">
         <div class="container">
-          <p class="section-number">03</p>
+          <p class="section-number">05</p>
 
           <h2>Synthetic → Real Transfer Works</h2>
 
@@ -255,13 +333,13 @@
          ========================================================= -->
       <section id="model-dependency" class="alternate">
         <div class="container">
-          <p class="section-number">04</p>
+          <p class="section-number">06</p>
 
           <h2>But Transfer Depends on the Detector</h2>
 
           <p class="section-intro">
             Synthetic-to-real transfer differed substantially between the two
-            evaluated segmentation frameworks.
+            evaluated segmentation frameworks. A rather simple, shallow 3D U-Net transfer well, but the SOTA nnU-Net struggled, why?
           </p>
 
           <div class="model-grid">
@@ -323,7 +401,7 @@
          ========================================================= -->
       <section id="challenge">
         <div class="container">
-          <p class="section-number">05</p>
+          <p class="section-number">07</p>
 
           <h2>The Synth-2-Real Challenge</h2>
 
@@ -351,7 +429,7 @@
          ========================================================= -->
       <section id="takeaways" class="takeaways">
         <div class="container">
-          <p class="section-number">06</p>
+          <p class="section-number">08</p>
 
           <h2>Takeaways</h2>
 

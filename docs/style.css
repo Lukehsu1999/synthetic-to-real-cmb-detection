@@ -152,12 +152,14 @@ p {
 
   margin-bottom: 64px;
 }
+
 .hero-authors {
   margin: 1rem 0 1.5rem;
   font-size: 1rem;
   color: #6b7280;
   line-height: 1.6;
 }
+
 /* =========================================================
    BUTTONS
    ========================================================= */
@@ -260,32 +262,14 @@ section.alternate {
    MOTIVATION
    ========================================================= */
 
-.motivation {
-  background: var(--background-alt);
-}
+/*
+   Motivation now deliberately inherits the shared section typography:
+   - standard h2
+   - standard .section-intro
+   - standard alternate background
 
-.motivation .container {
-  max-width: var(--max-width);
-}
-
-/* Main hook */
-
-.motivation-hook {
-  margin-bottom: 28px;
-
-  font-size: clamp(2.8rem, 6vw, 5rem);
-  letter-spacing: -0.05em;
-}
-
-.motivation-lead {
-  max-width: 760px;
-  margin-bottom: 64px;
-
-  color: var(--muted);
-  font-size: clamp(1.2rem, 2vw, 1.45rem);
-}
-
-/* Problems + annotation image */
+   Only its internal two-column storytelling layout is custom.
+*/
 
 .motivation-middle {
   display: grid;
@@ -293,35 +277,30 @@ section.alternate {
   gap: 64px;
   align-items: stretch;
 
-  margin-bottom: 80px;
+  margin-top: 48px;
+  margin-bottom: 56px;
 }
 
 .motivation-questions {
   display: flex;
   flex-direction: column;
-  gap: 44px;
-
-  margin-bottom: 0;
+  gap: 36px;
 }
 
 .motivation-block {
   padding-top: 24px;
-  border-top: 2px solid var(--border);
+  border-top: 1px solid var(--border);
+}
+
+.motivation-block h3 {
+  margin-bottom: 12px;
 }
 
 .motivation-block p {
-  font-size: 1.1rem;
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
 }
-
-.motivation-block .motivation-problem {
-  margin-bottom: 12px;
-
-  color: var(--text);
-  font-size: 1.25rem;
-  font-weight: 700;
-}
-
-/* Annotation image */
 
 .motivation-image-wrapper {
   overflow: hidden;
@@ -329,7 +308,6 @@ section.alternate {
 }
 
 .motivation-image {
-  display: block;
   width: 100%;
   height: 100%;
   min-height: 360px;
@@ -340,64 +318,111 @@ section.alternate {
   border-radius: 12px;
 }
 
-/* Turn toward synthetic generation */
-
 .motivation-turn {
   max-width: 820px;
-  padding-top: 48px;
+  padding-top: 36px;
 
   border-top: 1px solid var(--border);
 }
 
-.motivation-turn > p:first-child {
-  margin-bottom: 20px;
+.motivation-turn p {
+  max-width: 760px;
+  margin-bottom: 16px;
 
   color: var(--muted);
-  font-size: clamp(1.2rem, 2vw, 1.45rem);
-  font-weight: 400;
+  font-size: 1.15rem;
 }
 
-.motivation-final-question {
-  max-width: 760px;
+.motivation-turn p:last-child {
+  margin-bottom: 0;
+}
+
+.motivation-turn strong {
+  color: var(--accent);
+  font-weight: 700;
+}
+/* =========================================================
+   CEREBRAL MICROBLEED BACKGROUND
+   ========================================================= */
+
+.cmb-background-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.cmb-background-copy .section-intro {
+  margin-bottom: 24px;
+}
+
+.cmb-background-note {
+  margin-bottom: 48px;
+
+  color: var(--text);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Traits */
+
+.cmb-traits {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.cmb-trait {
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.cmb-trait h3 {
+  margin-bottom: 8px;
+}
+
+.cmb-trait p {
   margin-bottom: 0;
 
   color: var(--muted);
-  font-size: clamp(1.2rem, 2vw, 1.45rem);
-  font-weight: 400;
-  line-height: 1.65;
-  letter-spacing: normal;
+  font-size: 1rem;
 }
 
-.motivation-final-question strong {
-  color: var(--accent);
-  font-weight: 700;
+/* MRI */
+
+.cmb-background-figure {
+  margin: 0;
+}
+
+.cmb-background-image {
+  width: 100%;
+  height: auto;
+
+  border-radius: 12px;
+}
+
+.cmb-background-figure figcaption {
+  margin-top: 12px;
+
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: center;
 }
 
 /* Mobile */
 
-@media (max-width: 750px) {ß
-  .motivation-lead {
-    margin-bottom: 48px;
-  }
-
-  .motivation-middle {
+@media (max-width: 750px) {
+  .cmb-background-grid {
     grid-template-columns: 1fr;
     gap: 40px;
-
-    margin-bottom: 56px;
   }
 
-  .motivation-questions {
-    gap: 36px;
+  .cmb-background-note {
+    margin-bottom: 40px;
   }
 
-  .motivation-image {
-    height: auto;
-    min-height: 0;
-  }
-
-  .motivation-turn {
-    padding-top: 36px;
+  .cmb-traits {
+    gap: 24px;
   }
 }
 /* =========================================================
@@ -591,8 +616,39 @@ footer p {
 }
 
 /* =========================================================
-   MOBILE
+   PREDICTIONS
    ========================================================= */
+
+.prediction-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 52px;
+}
+
+.prediction-video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.model-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 28px;
+  border-radius: 8px;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .prediction-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
 @media (max-width: 750px) {
   .hero {
@@ -602,6 +658,27 @@ footer p {
 
   section {
     padding: 80px 0;
+  }
+
+  .motivation-middle {
+    grid-template-columns: 1fr;
+    gap: 40px;
+
+    margin-top: 40px;
+    margin-bottom: 48px;
+  }
+
+  .motivation-questions {
+    gap: 32px;
+  }
+
+  .motivation-image {
+    height: auto;
+    min-height: 0;
+  }
+
+  .motivation-turn {
+    padding-top: 32px;
   }
 
   .comparison-grid,
@@ -621,46 +698,14 @@ footer p {
   }
 }
 
-/* =========================================================
-   Predictions
-   ========================================================= */
-.prediction-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-top: 52px;
-}
-
-.prediction-video {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-/* Tablet */
-@media (max-width: 900px) {
-  .prediction-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Phone */
-@media (max-width: 550px) {
-  .prediction-grid {
+@media (max-width: 650px) {
+  .model-grid {
     grid-template-columns: 1fr;
   }
 }
 
-.model-video {
-  display: block;
-  width: 100%;
-  height: auto;
-  margin-top: 28px;
-  border-radius: 8px;
-}
-
-@media (max-width: 650px) {
-  .model-grid {
+@media (max-width: 550px) {
+  .prediction-grid {
     grid-template-columns: 1fr;
   }
 }
