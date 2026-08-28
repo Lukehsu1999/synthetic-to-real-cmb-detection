@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -59,6 +58,53 @@
     </header>
 
     <main>
+      <!-- =========================================================
+     MOTIVATION
+     ========================================================= -->
+      <section id="motivation" class="motivation">
+        <div class="container">
+          <p class="section-number">01</p>
+
+          <h2 class="motivation-hook">Data. Labels. Cleaning.</h2>
+
+          <p class="motivation-lead">
+            More often than models, these are what set the performance ceiling
+            in medical AI.
+          </p>
+
+          <div class="motivation-questions">
+            <div class="motivation-block">
+              <p class="motivation-problem">But disease data are scarce.</p>
+              <p>
+                How do we train a model when we have few—or even no—positive
+                patients?
+              </p>
+            </div>
+
+            <div class="motivation-block">
+              <p class="motivation-problem">
+                But expert annotation is expensive.
+              </p>
+              <p>
+                Can we create useful training targets without labeling every
+                lesion by hand?
+              </p>
+            </div>
+          </div>
+
+          <div class="motivation-turn">
+            <p>
+              <strong>Suppose we could build a proxy disease generator.</strong>
+            </p>
+
+            <p class="motivation-final-question">
+              Could a model learn entirely from
+              <strong>fake lesions</strong>—and still detect
+              <strong>real ones</strong>?
+            </p>
+          </div>
+        </div>
+      </section>
       <!-- =========================================================
          SYNTHETIC CMB GENERATION
          ========================================================= -->
@@ -130,9 +176,7 @@
             <div class="metric">
               <span class="metric-value">83.7%</span>
 
-              <span class="metric-label">
-                of real-trained Dice retained
-              </span>
+              <span class="metric-label"> of real-trained Dice retained </span>
             </div>
           </div>
 
@@ -442,4 +486,3 @@
     </script>
   </body>
 </html>
-
