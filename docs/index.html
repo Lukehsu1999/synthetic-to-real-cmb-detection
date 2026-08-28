@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -44,6 +45,7 @@
         </p>
 
         <div class="hero-links">
+          <!-- TODO: replace # with actual links -->
           <a class="button primary" href="#">Paper</a>
           <a class="button secondary" href="#">GitHub</a>
         </div>
@@ -100,6 +102,7 @@
             </div>
           </div>
 
+          <!-- TODO: link directly to synthesis/ README -->
           <p class="detail-link">
             <a href="#">Explore the synthesis implementation →</a>
           </p>
@@ -353,6 +356,7 @@
           </p>
 
           <div class="hero-links">
+            <!-- TODO: replace # with actual URLs -->
             <a class="button primary" href="#">Read the Paper</a>
             <a class="button secondary" href="#">View on GitHub</a>
           </div>
@@ -367,37 +371,20 @@
     </footer>
 
     <script>
-      /*
-       * Synchronize one group of videos.
-       *
-       * The first video is the master clock.
-       * All other videos follow its currentTime.
-       */
       function syncVideoGroup(selector) {
         const videos = Array.from(document.querySelectorAll(selector));
 
         if (videos.length < 2) return;
 
         const master = videos[0];
-        let groupVisible = false;
 
-        /*
-         * Safely ask a video to play.
-         * Safari may reject play() under certain power/browser conditions,
-         * so we catch the error instead of breaking the script.
-         */
         function playVideo(video) {
           video.play().catch((error) => {
-            console.warn("Video playback failed:", video.currentSrc, error);
+            console.warn("Video autoplay failed:", video.currentSrc, error);
           });
         }
 
-        /*
-         * Restart the whole group together.
-         */
         function restartTogether() {
-          if (!groupVisible) return;
-
           videos.forEach((video) => {
             video.pause();
             video.currentTime = 0;
@@ -408,25 +395,15 @@
           });
         }
 
-        /*
-         * Continuously compare each follower against the master.
-         */
         function keepInSync() {
-          if (groupVisible && !master.paused && !master.ended) {
+          if (!master.paused && !master.ended) {
             videos.slice(1).forEach((video) => {
               const drift = video.currentTime - master.currentTime;
 
-              /*
-               * Correct noticeable timing drift.
-               */
               if (Math.abs(drift) > 0.08) {
                 video.currentTime = master.currentTime;
               }
 
-              /*
-               * If Safari unexpectedly pauses one follower,
-               * jump it to the master time and restart it.
-               */
               if (video.paused && !video.ended) {
                 video.currentTime = master.currentTime;
                 playVideo(video);
@@ -437,77 +414,32 @@
           requestAnimationFrame(keepInSync);
         }
 
-        /*
-         * Observe the whole video group.
-         *
-         * Videos play only while the group is visible.
-         * This reduces iPhone CPU/memory/video-decoding load.
-         */
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                groupVisible = true;
-
-                /*
-                 * When returning to this section,
-                 * align followers with the master before playback.
-                 */
-                videos.slice(1).forEach((video) => {
-                  video.currentTime = master.currentTime;
-                });
-
-                videos.forEach((video) => {
-                  playVideo(video);
-                });
+        const readyPromises = videos.map(
+          (video) =>
+            new Promise((resolve) => {
+              if (video.readyState >= 3) {
+                resolve();
               } else {
-                groupVisible = false;
-
-                videos.forEach((video) => {
-                  video.pause();
+                video.addEventListener("canplay", resolve, {
+                  once: true,
                 });
               }
-            });
-          },
-          {
-            threshold: 0.2,
-          },
+            }),
         );
 
-        /*
-         * Observe the container holding this group,
-         * rather than each individual video.
-         */
-        const groupContainer = master.parentElement;
+        Promise.all(readyPromises).then(() => {
+          restartTogether();
+          requestAnimationFrame(keepInSync);
+        });
 
-        if (groupContainer) {
-          observer.observe(groupContainer);
-        }
-
-        /*
-         * When the master finishes, restart every video together.
-         */
         master.addEventListener("ended", () => {
           restartTogether();
         });
-
-        /*
-         * Start continuous drift monitoring.
-         */
-        requestAnimationFrame(keepInSync);
       }
 
-      /*
-       * Group 1:
-       * Original / Ground Truth / Real-trained / Synth-trained
-       */
       syncVideoGroup(".sync-prediction-video");
-
-      /*
-       * Group 2:
-       * MONAI / nnU-Net
-       */
       syncVideoGroup(".sync-model-video");
     </script>
   </body>
 </html>
+
