@@ -458,7 +458,7 @@ alpha = alpha * brain_crop.astype(np.float32)
 The sampled blending strength $s$ scales the alpha mask:
 
 $$
-a=s\alpha.
+a = s\alpha.
 $$
 
 The synthetic lesion is inserted using alpha compositing:
