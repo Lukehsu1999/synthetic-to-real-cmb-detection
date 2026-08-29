@@ -16,21 +16,21 @@ Authors: Luke To-Liang Hsu, Ting-Yu Lai, Ching-Ting Lin, Chun-Hao Huang, Wei-Chu
 
 ### Synthetic-to-Real Transfer
 
-| Training Data | Mean Dice ↑ | Lesion Sensitivity ↑ | FP/Case ↓ |
-|---|---:|---:|---:|
-| Real (MONAI R78) | **0.688** | **0.854** | **1.135** |
-| Synthetic (MONAI S75) | 0.576 | 0.749 | 1.423 |
+| Framework | Training Data | Mean Dice ↑ | Lesion Sensitivity ↑ | FP/Case ↓ |
+|---|---|---:|---:|---:|
+| MONAI 3D U-Net | Real (78) | **0.688** | **0.854** | **1.135** |
+| MONAI 3D U-Net | Synthetic (75) | 0.576 | 0.749 | 1.423 |
 
 Synthetic-only training retained **87.7% of real-trained lesion sensitivity** without using real CMB annotations for training or validation.
 
 ### Architecture Dependency
 
-| Framework | Training | Dice ↑ | Sensitivity ↑ | FP/Case ↓ |
+| Framework | Training | Mean Dice ↑ | Lesion Sensitivity ↑ | FP/Case ↓ |
 |---|---|---:|---:|---:|
-| MONAI 3D U-Net | Real | **0.688** | **0.854** | 1.135 |
-| MONAI 3D U-Net | Synthetic | 0.576 | 0.749 | 1.423 |
-| nnU-Net | Real | **0.777** | **0.860** | 0.500 |
-| nnU-Net | Synthetic | 0.240 | 0.269 | **0.192** |
+| MONAI 3D U-Net | Real (78) | **0.688** | **0.854** | 1.135 |
+| MONAI 3D U-Net | Synthetic (75) | 0.576 | 0.749 | 1.423 |
+| nnU-Net | Real (78) | **0.777** | **0.860** | 0.500 |
+| nnU-Net | Synthetic (75) | 0.240 | 0.269 | **0.192** |
 
 Synthetic-to-real transfer was strongly **architecture-dependent**.
 
