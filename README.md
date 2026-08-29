@@ -4,6 +4,8 @@ This repository provides a reproducible pipeline for studying synthetic-to-real 
 
 Authors: Luke To-Liang Hsu, Ting-Yu Lai, Ching-Ting Lin, Chun-Hao Huang, Wei-Chun Wang
 
+🌐 [Project Website](https://lukehsu1999.github.io/synthetic-to-real-cmb-detection/) · 📄 Paper: Coming Soon
+
 ────────────────────────────────────
 
 ## 💡 Synthetic-to-Real CMB Detection
@@ -36,6 +38,8 @@ Synthetic-to-real transfer was strongly **architecture-dependent**.
 
 ![Sample Prediction](https://github.com/Lukehsu1999/synthetic-to-real-cmb-detection/blob/main/figures/MONAI_sample_982880_R3664297_SWAN_rank_01_slice_058.png)
 
+🌐 **[Explore more prediction visualizations on the project website →](https://lukehsu1999.github.io/synthetic-to-real-cmb-detection/)**
+
 > See the paper for complete experiments, confidence intervals, case-level metrics, and lesion-size-stratified results.
 
 ────────────────────────────────────
@@ -56,4 +60,4 @@ Clinical imaging data are not publicly distributed due to privacy and institutio
 | 5 | evaluation/ | Evaluate predictions and bootstrap CIs | [README](./evaluation/README.md) |
 
 ## 📄 Paper & Citation
-...
+Paper: Coming soon
