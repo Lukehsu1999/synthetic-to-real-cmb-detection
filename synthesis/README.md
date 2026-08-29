@@ -457,33 +457,19 @@ alpha = alpha * brain_crop.astype(np.float32)
 
 The sampled blending strength $s$ scales the alpha mask:
 
-$$
-a = s\alpha.
-$$
+$$a = s\alpha.$$
 
 The synthetic lesion is inserted using alpha compositing:
 
-$$
-I_{\mathrm{syn}}
-=
-(1-a)I_{\mathrm{host}}
-+
-aI_{\mathrm{lesion}}.
-$$
+$$I_{\mathrm{syn}} = (1-a)I_{\mathrm{host}} + aI_{\mathrm{lesion}}.$$
 
-This produces a gradual transition between the hypointense synthetic
-lesion and surrounding tissue.
+This produces a gradual transition between the hypointense synthetic lesion and surrounding tissue.
 
-The corresponding binary ground-truth mask is obtained independently
-from the **unscaled** alpha mask:
+The corresponding binary ground-truth mask is obtained independently from the **unscaled** alpha mask:
 
-$$
-\alpha > 0.5.
-$$
+$$\alpha > 0.5.$$
 
-Therefore, blending strength changes the appearance of the synthetic
-lesion but does not directly change the threshold used to define its
-binary annotation.
+Therefore, blending strength changes the appearance of the synthetic lesion but does not directly change the threshold used to define its binary annotation.
 
 ------------------------------------------------------------------------
 
